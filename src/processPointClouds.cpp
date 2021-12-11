@@ -207,7 +207,7 @@ std::vector<typename pcl::PointCloud<PointT>::Ptr> ProcessPointClouds<PointT>::C
 
     std::vector<typename pcl::PointCloud<PointT>::Ptr> clusters;
     
-    //create Process cluster object and call clustering
+    //create Process cluster object . The class ProcessCluster contains algorithm implemented for clustering by myself.
     ProcessCluster<pcl::PointXYZI> cluster_ops(cloud); 
     clusters = cluster_ops.euclideanCluster(clusterTolerance,minSize,maxSize);
 

@@ -34,7 +34,7 @@ struct KdTree
 	{
 		// TODO: Fill in this function to insert a new point into the tree
 		// the function should create a new node and place correctly with in the root 
-			unsigned int compare_index = level % 2;
+			unsigned int compare_index = level % 3;
 			if (*current_node == NULL){
 				*current_node = new Node(point,id);
 			}
@@ -82,12 +82,15 @@ struct KdTree
 			float max_y = target[1] + distanceTol;
 			float min_y = target[1] - distanceTol;
 
-			
-			unsigned int s_level = level% 2;
+			float max_z = target[2] + distanceTol;
+			float min_z = target[2] - distanceTol;
 
-			if ( ((current_node->point[0]>=min_x) && (current_node->point[0]<=max_x)) && ((current_node->point[1]>=min_y) && (current_node->point[1]<=max_y)) ){
+			
+			unsigned int s_level = level% 3;
+
+			if ( ((current_node->point[0]>=min_x) && (current_node->point[0]<=max_x)) && ((current_node->point[1]>=min_y) && (current_node->point[1]<=max_y)) && ((current_node->point[2]>=min_z) && (current_node->point[2]<=max_z)) ){
 				
-				float dist = sqrt((target[0] - current_node->point[0]) * (target[0] - current_node->point[0]) + (target[1] - current_node->point[1]) * (target[1] - current_node->point[1]));
+				float dist = sqrt((target[0] - current_node->point[0]) * (target[0] - current_node->point[0]) + (target[1] - current_node->point[1]) * (target[1] - current_node->point[1]) + (target[2] - current_node->point[2]) * (target[2] - current_node->point[2]) );
 				
 				if (dist <= distanceTol)
 						
